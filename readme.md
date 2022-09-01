@@ -1,4 +1,4 @@
-# Steering wheel API using gamepad API
+# Steering wheel API *v0.1*
 
 Still work in progress.
 
