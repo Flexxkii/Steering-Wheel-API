@@ -14,8 +14,7 @@ function game(time) {
         if(val && val.id.includes("Wheel")) {
             var dpad_val;
 
-            // console.log(val);
-
+            // Based on Logitech G29 Dpad value. Check https://gamepad-tester.com/
             if(val.axes[9] > 0.70 && val.axes[9] < 0.72) {
                 dpad_val = "left";    
             } else if(val.axes[9] < -0.99 && val.axes[9] > -1.01) {
@@ -48,8 +47,8 @@ function game(time) {
                 break: (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100,
                 clutch: (100 - Math.round(((pad.clutch + 1) / 2) * 100)) / 100
             }
-            console.log(magic_wheel.steering);
 
+            // For Demo purposes
             $(".wheel").css('transform', `rotate(${magic_wheel.steering}deg)`);
             $(".gas").val(magic_wheel.gas);
             $(".break").val(magic_wheel.break);
