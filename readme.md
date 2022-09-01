@@ -1,4 +1,4 @@
-# Steering wheel API *v0.1*
+# Steering wheel API *v0.1.1*
 
 Still work in progress.
 
@@ -15,16 +15,16 @@ Get steering wheel data
 
 ```javascript
 // Returns degrees of motion
-steeringwheel_.steering
+steeringwheel.steering
 
 // Returns amount of gas input ranging from 0 to 100
-steeringwheel_.gas
+steeringwheel.gas
 
 // Returns amount of break input ranging  from 0 to 100
-steeringwheel_.break
+steeringwheel.break
 
 // Returns amount of clutch input ranging  from 0 to 100
-steeringwheel_.clutch
+steeringwheel.clutch
 ```
 
 Edited this to your steering wheel max rotation amount, default is 900.
@@ -40,6 +40,18 @@ var steering_max_rotation = 900;
 * Make it easier to integrate into other projects.
 * Compatible with other steering wheel if they aren't. (Haven't tested)
 * Low priority, but maybe a nice interface for the demo.
+* Optimize code.
+
+## Changes
+
+* 0.1.0
+    * Initiale release
+
+* 0.1.1
+    * Added two new values
+        * steeringwheel.steering_procent & steeringwheel.steering_procent_50
+    * Optimized code to only do changes when values have changed instead of repeating the same values.
+    * Made steeringwheel object accessible outside it's function.
 
 
 ## Contributing

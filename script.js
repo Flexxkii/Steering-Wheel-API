@@ -3,6 +3,8 @@ let last = 0;
 let num = 0;
 let speed = 0.7;
 var steering_max_rotation = 900;
+var steeringwheel = {};
+var current_values = {};
 
 function game(time) {
 
@@ -32,9 +34,9 @@ function game(time) {
 
             const pad = {
                     steering: val.axes[0],
-                    clutch: val.axes[1],
                     gas: val.axes[2],
                     break: val.axes[5],
+                    clutch: val.axes[1],
                     dpad: dpad_val,
                     buttons: {
                         a: val.buttons[0].pressed,
@@ -44,18 +46,34 @@ function game(time) {
                     }
             }
 
-            const steeringwheel_ = {
+            steeringwheel = {
                 steering: steering_max_rotation * pad.steering  * .5,
+                steering_procent: 100 * pad.steering,
+                steering_procent_50: 50 +(50 * pad.steering),
                 gas: (100 - Math.round(((pad.gas + 1) / 2) * 100)) / 100,
                 break: (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100,
                 clutch: (100 - Math.round(((pad.clutch + 1) / 2) * 100)) / 100
             }
 
             // For Demo purposes
-            $(".wheel").css('transform', `rotate(${steeringwheel_.steering}deg)`);
-            $(".gas").val(steeringwheel_.gas);
-            $(".break").val(steeringwheel_.break);
-            $(".clutch").val(steeringwheel_.clutch);
+            // Only change when current number is different from previous number to stop propagation
+            if(pad.steering != current_values.steering) {
+                $(".steering_amount").val(steeringwheel.steering_procent_50 / 100);
+                $(".wheel").css('transform', `rotate(${steeringwheel.steering}deg)`);
+                $(".steering_value").text(steeringwheel.steering_procent.toFixed(2));
+            }
+
+            pad.gas != current_values.gas ? $(".gas").val(steeringwheel.gas) : false;
+            pad.break != current_values.break ? $(".break").val(steeringwheel.break) : false;
+            pad.clutch != current_values.clutch ? $(".clutch").val(steeringwheel.clutch) : false;
+
+            current_values = {
+                steering: pad.steering,
+                gas: pad.gas,
+                break: pad.break,
+                clutch: pad.clutch,
+            }
+            
             $(".btn").html(pad.dpad);
 
             // Returns Dpad button presses
