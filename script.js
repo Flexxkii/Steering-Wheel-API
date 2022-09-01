@@ -41,17 +41,21 @@ function game(time) {
                         x: val.buttons[1].pressed
                     }
             }
-            // console.log(pad);
-            const magic_steering = 900 * pad.steering  * .5;
-            const magic_gas = (100 - Math.round(((pad.gas + 1) / 2) * 100)) / 100;
-            const magic_break = (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100;
-            const magic_clutch = (100 - Math.round(((pad.clutch + 1) / 2) * 100)) / 100;
-            $(".gas").val(magic_gas);
-            $(".break").val(magic_break);
-            $(".clutch").val(magic_clutch);
+
+            const magic_wheel = {
+                steering: 900 * pad.steering  * .5,
+                gas: (100 - Math.round(((pad.gas + 1) / 2) * 100)) / 100,
+                break: (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100,
+                clutch: (100 - Math.round(((pad.clutch + 1) / 2) * 100)) / 100
+            }
+            console.log(magic_wheel.steering);
+
+            $(".wheel").css('transform', `rotate(${magic_wheel.steering}deg)`);
+            $(".gas").val(magic_wheel.gas);
+            $(".break").val(magic_wheel.break);
+            $(".clutch").val(magic_wheel.clutch);
             $(".btn").html(pad.dpad);
-            $(".wheel").css('transform', `rotate(${magic_steering}deg)`);
-            // console.log(pad.buttons);
+
             Object.entries(pad.buttons).forEach(btn_val => {
                 const entry_key = btn_val[0];
                 const entry_val = btn_val[1];
@@ -70,16 +74,12 @@ function game(time) {
 game();
 
 function btn_press(btn) {
-    // console.log(window.performance.now());
-    // console.log('button is pressed', btn);
     if(btn != temp_btn) {
         console.log(btn);
         console.log(temp_btn);
         console.log('button is pressed', btn);
     }
 }
-
-
 
 window.addEventListener("gamepaddisconnected", (event) => {
     console.log("A gamepad disconnected:");
