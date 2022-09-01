@@ -27,6 +27,12 @@ magic_wheel.break
 magic_wheel.clutch
 ```
 
+Edited this to your steering wheel max rotation amount, default is 900.
+
+```javascript
+var steering_max_rotation = 900;
+```
+
 ## Todo
 * A lot
 * Keybind every possible buttons

@@ -2,6 +2,7 @@ var temp_btn;
 let last = 0;
 let num = 0;
 let speed = 0.7;
+var steering_max_rotation = 900;
 
 function game(time) {
 
@@ -44,7 +45,7 @@ function game(time) {
             }
 
             const magic_wheel = {
-                steering: 900 * pad.steering  * .5,
+                steering: steering_max_rotation * pad.steering  * .5,
                 gas: (100 - Math.round(((pad.gas + 1) / 2) * 100)) / 100,
                 break: (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100,
                 clutch: (100 - Math.round(((pad.clutch + 1) / 2) * 100)) / 100
