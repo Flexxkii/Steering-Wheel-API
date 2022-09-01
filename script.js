@@ -44,7 +44,7 @@ function game(time) {
                     }
             }
 
-            const steeringwheel_wheel = {
+            const steeringwheel_ = {
                 steering: steering_max_rotation * pad.steering  * .5,
                 gas: (100 - Math.round(((pad.gas + 1) / 2) * 100)) / 100,
                 break: (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100,
@@ -52,10 +52,10 @@ function game(time) {
             }
 
             // For Demo purposes
-            $(".wheel").css('transform', `rotate(${steeringwheel_wheel.steering}deg)`);
-            $(".gas").val(steeringwheel_wheel.gas);
-            $(".break").val(steeringwheel_wheel.break);
-            $(".clutch").val(steeringwheel_wheel.clutch);
+            $(".wheel").css('transform', `rotate(${steeringwheel_.steering}deg)`);
+            $(".gas").val(steeringwheel_.gas);
+            $(".break").val(steeringwheel_.break);
+            $(".clutch").val(steeringwheel_.clutch);
             $(".btn").html(pad.dpad);
 
             // Returns Dpad button presses

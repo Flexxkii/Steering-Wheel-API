@@ -15,16 +15,16 @@ Get steering wheel data
 
 ```javascript
 // Returns degrees of motion
-steeringwheel_wheel.steering
+steeringwheel_.steering
 
 // Returns amount of gas input ranging from 0 to 100
-steeringwheel_wheel.gas
+steeringwheel_.gas
 
 // Returns amount of break input ranging  from 0 to 100
-steeringwheel_wheel.break
+steeringwheel_.break
 
 // Returns amount of clutch input ranging  from 0 to 100
-steeringwheel_wheel.clutch
+steeringwheel_.clutch
 ```
 
 Edited this to your steering wheel max rotation amount, default is 900.
