@@ -4,6 +4,8 @@ let num = 0;
 let speed = 0.7;
 
 function game(time) {
+
+    // Resets the pressed Dpad button to prevent quickly repeated button press
     let timeInSecond = time / 1000;
     if (timeInSecond - last >= speed) {
         last = timeInSecond;
@@ -55,6 +57,7 @@ function game(time) {
             $(".clutch").val(magic_wheel.clutch);
             $(".btn").html(pad.dpad);
 
+            // Returns Dpad button presses
             Object.entries(pad.buttons).forEach(btn_val => {
                 const entry_key = btn_val[0];
                 const entry_val = btn_val[1];
