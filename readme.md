@@ -2,7 +2,7 @@
 
 Still work in progress.
 
-There are currently 0 browser games supporting steering wheel as a gamepad... So in hope to change it, I made this API for easier implementing it. Do share your browser game if you do.
+There are currently 0 browser games supporting steering wheel as a gamepad... So in hope to change it, I made this API for easier implementing it. Do share your browser game if you do support it or have implemented this API.
 
 Tested with a Logitech G29
 
