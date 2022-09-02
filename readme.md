@@ -1,10 +1,10 @@
-# Steering wheel API *v0.1.1*
+# Steering wheel API *v0.1.2*
 
 Still work in progress.
 
 Tested with a Logitech G29
 
-![Preview](https://i.imgur.com/FlH1YXV.png "preview")
+![Preview](https://i.imgur.com/sJzjrgl.png "preview")
 
 ## Installation
 Include the script.js file in the header of your page.
@@ -52,6 +52,8 @@ var steering_max_rotation = 900;
         * steeringwheel.steering_procent & steeringwheel.steering_procent_50
     * Optimized code to only do changes when values have changed instead of repeating the same values.
     * Made steeringwheel object accessible outside it's function.
+* 0.1.2
+    * Updated demo styling (more coming soon)
 
 
 ## Contributing

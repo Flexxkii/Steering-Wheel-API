@@ -6,31 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Steering Wheel API example</title>
 </head>
 <body>
-    <div class="container"><img class="wheel" src="steering2.png"></div>
-    <div>
-        <span>Gas</span>
-        <meter value="0" class="gas"></meter>
+    <div class="container">
+        <div class="data">
+            <div class="data_container">
+                <div>
+                    <span>Gas</span>
+                    <meter value="0" class="gas"></meter>
+                </div>
+                <div>
+                    <span>Break</span>
+                    <meter value="0" class="break"></meter>
+                </div>
+                <div>
+                    <span>Clutch</span>
+                    <meter value="0" class="clutch"></meter>
+                </div>
+                <div>
+                    <span>Steering position</span>
+                    <meter value="0" class="steering_amount"></meter>
+                </div>
+                <div>
+                    <span>Steering value: </span>
+                    <span><span class="steering_value"></span>%</span>
+                </div>
+                <div>
+                    <span>Button pressed:</span>
+                    <span class="btn"></span>
+                </div>
+            </div>
+        </div>
+        <div class="wheel_container">
+            <img class="wheel" src="steering-wheel.svg">
+            <img class="wheel_bg" src="background.svg">
+        </div>
     </div>
-    <div>
-        <span>Break</span>
-        <meter value="0" class="break"></meter>
-    </div>
-    <div>
-        <span>Clutch</span>
-        <meter value="0" class="clutch"></meter>
-    </div>
-    <div>
-        <span>Steering amount</span>
-        <meter value="0" class="steering_amount"></meter>
-    </div>
-    <div>
-        <span>Steering value: </span>
-        <span><span class="steering_value"></span>%</span>
-    </div>
-    <span>Buttons pressed: <span class="btn"></span></span>
 </body>
 </html>

@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #0c181f;
+    font-family: 'PT Mono', monospace;
 }
 
 .container {
@@ -13,8 +15,50 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.data {
+    width: 600px;
+    background: #1c3545;
+    color: white;
+    border-radius: 5px;
+}
+
+.data_container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    flex-direction: row;
+    align-content: space-between;
+    height: 50px;
+}
+
+.data_container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wheel_container {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .wheel {
     height: 75%;
+    position: absolute;
+    z-index: 1;
+    opacity: .5;
+}
+
+.wheel_bg {
+    position: absolute;
+    opacity: .1;
 }
