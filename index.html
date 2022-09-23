@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=VT323&display=swap" rel="stylesheet">
@@ -42,10 +42,38 @@
                 </div>
             </div>
         </div>
+        <div class="settings">
+            <div class="settings_container">
+                <div>
+                    <span><strong>Max steering rotation</strong></span>
+                    <div class="settings_steering_container">
+                        <input type="range" min="180" max="900" value="900" step="10" id="settings_rotation">
+                        <div class="settings_steering_container_val">
+                            <span>min: <span class="min">0</span></span>
+                            <span>current: <span class="current">0</span></span>
+                            <span>max: <span class="max">0</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="wheel_container">
             <img class="wheel" src="steering-wheel.svg">
             <img class="wheel_bg" src="background.svg">
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    const max_steering_range_min = $("#settings_rotation").attr('min');
+    const max_steering_range_max = $("#settings_rotation").attr('max');
+    let max_steering_range_current = $("#settings_rotation").val();
+
+    $(".settings_steering_container_val").find('.min').text(max_steering_range_min);
+    $(".settings_steering_container_val").find('.max').text(max_steering_range_max);
+    $(".settings_steering_container_val").find('.current').text(max_steering_range_current);
+    $("#settings_rotation").on('input', function() {
+        max_steering_range_current = $("#settings_rotation").val();
+        $(".settings_steering_container_val").find('.current').text(max_steering_range_current);
+    })
+</script>
 </html>

@@ -3,10 +3,15 @@ let last = 0;
 let num = 0;
 let speed = 0.7;
 var steering_max_rotation = 900;
+var steering_max_rotation_set;
+
 var steeringwheel = {};
 var current_values = {};
+var steering_timestamp = -1;
 
 function game(time) {
+
+    steering_max_rotation_set = parseInt($("#settings_rotation").val());
 
     // Resets the pressed Dpad button to prevent quickly repeated button press
     let timeInSecond = time / 1000;
@@ -16,8 +21,9 @@ function game(time) {
     }
     var gp = navigator.getGamepads();
     gp.forEach(function(val, key) {
-        if(val && val.id.includes("Wheel")) {
+        if(val && val.id.includes("Wheel") && steering_timestamp != val.timestamp) {
             var dpad_val;
+            steering_timestamp = val.timestamp;
 
             // Based on Logitech G29 Dpad value. Check https://gamepad-tester.com/
             if(val.axes[9] > 0.70 && val.axes[9] < 0.72) {
@@ -48,19 +54,20 @@ function game(time) {
 
             steeringwheel = {
                 steering: steering_max_rotation * pad.steering  * .5,
-                steering_procent: 100 * pad.steering,
-                steering_procent_50: 50 +(50 * pad.steering),
+                steering_procent: (steering_max_rotation * pad.steering  * .5) / (steering_max_rotation_set / 2) * 100,
+                steering_procent_50: 50 + ((steering_max_rotation * pad.steering  * .5) / (steering_max_rotation_set / 2) * 50),
                 gas: (100 - Math.round(((pad.gas + 1) / 2) * 100)) / 100,
                 break: (100 - Math.round(((pad.break + 1) / 2) * 100)) / 100,
                 clutch: (100 - Math.round(((pad.clutch + 1) / 2) * 100)) / 100
             }
 
             // For Demo purposes
-            // Only change when current number is different from previous number to stop propagation
-            if(pad.steering != current_values.steering) {
-                $(".steering_amount").val(steeringwheel.steering_procent_50 / 100);
-                $(".wheel").css('transform', `rotate(${steeringwheel.steering}deg)`);
+            $(".steering_amount").val(steeringwheel.steering_procent_50 / 100);
+            $(".wheel").css('transform', `rotate(${steeringwheel.steering}deg)`);
+            if(steeringwheel.steering_procent) {
                 $(".steering_value").text(steeringwheel.steering_procent.toFixed(2));
+            } else {
+                $(".steering_value").text("0");
             }
 
             pad.gas != current_values.gas ? $(".gas").val(steeringwheel.gas) : false;
@@ -85,10 +92,8 @@ function game(time) {
                     temp_btn = entry_key;
                 }
             })
-
         }
     });
-
   window.requestAnimationFrame(game);
 }
 
@@ -102,6 +107,8 @@ function btn_press(btn) {
     }
 }
 
+
+// WIP
 window.addEventListener("gamepaddisconnected", (event) => {
     console.log("A gamepad disconnected:");
     debug1.html(event.gamepad);

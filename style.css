@@ -33,13 +33,51 @@ body {
     gap: 10px;
     flex-direction: row;
     align-content: space-between;
-    height: 50px;
 }
 
 .data_container div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.settings {
+    width: 600px;
+    background: #1c3545;
+    color: white;
+    border-radius: 5px;
+}
+
+.settings_container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.settings_container div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings_steering_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.settings_steering_container_val {
+    flex-direction: row;
+    gap: 20px;
+    width: auto;
 }
 
 .wheel_container {

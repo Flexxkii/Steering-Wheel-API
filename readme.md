@@ -1,4 +1,4 @@
-# Steering wheel API *v0.1.2*
+# Steering wheel API *v0.1.3*
 
 Still work in progress.
 
@@ -47,7 +47,7 @@ var steering_max_rotation = 900;
 ## Changes
 
 * 0.1.0
-    * Initiale release
+    * Initiale release.
 
 * 0.1.1
     * Added two new values
@@ -56,6 +56,12 @@ var steering_max_rotation = 900;
     * Made steeringwheel object accessible outside it's function.
 * 0.1.2
     * Updated demo styling (more coming soon)
+* 0.1.3
+    * added max steering rotation variable (steering_max_rotation_set) and added a demo slider in the example.
+    * updated calculations for:
+        * Steering position data
+        * Steering value data
+    * Better listener for updating pad data by checking for timestamp.
 
 
 ## Contributing
